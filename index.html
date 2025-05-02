@@ -8,28 +8,43 @@
 </head>
 <body>
     
-    <div id="calculator">
-        <input id="display" placeholder="0" readonly>
-        <div id="keys">
-            <button onclick="appendDisplay('1')">1</button>
-            <button onclick="appendDisplay('2')">2</button>
-            <button onclick="appendDisplay('3')">3</button>
-            <button onclick="appendDisplay('+')">+</button>
-            <button onclick="appendDisplay('4')">4</button>
-            <button onclick="appendDisplay('5')">5</button>
-            <button onclick="appendDisplay('6')">6</button>
-            <button onclick="appendDisplay('-')">-</button>
-            <button onclick="appendDisplay('7')">7</button>
-            <button onclick="appendDisplay('8')">8</button>
-            <button onclick="appendDisplay('9')">9</button>
-            <button onclick="appendDisplay('*')">*</button>
-            <button onclick="appendDisplay('.')">.</button>
-            <button onclick="appendDisplay('0')">0</button>
-            <button onclick="calculate()" class="calculate-key">=</button>
-            <button onclick="appendDisplay('/')">/</button>
-            <button onclick="clearDisplay()">C</button>
+    <div id="wrapper">
+        <div id="calculatorContainer">
+            <div id="calculator">
+                <input id="display" placeholder="0" readonly>
+                <div id="keys">
+                    <button onclick="appendDisplay('1')">1</button>
+                    <button onclick="appendDisplay('2')">2</button>
+                    <button onclick="appendDisplay('3')">3</button>
+                    <button onclick="appendDisplay('+')" class="operator-key">+</button>
+                    <button onclick="appendDisplay('4')">4</button>
+                    <button onclick="appendDisplay('5')">5</button>
+                    <button onclick="appendDisplay('6')">6</button>
+                    <button onclick="appendDisplay('-')" class="operator-key">-</button>
+                    <button onclick="appendDisplay('7')">7</button>
+                    <button onclick="appendDisplay('8')">8</button>
+                    <button onclick="appendDisplay('9')">9</button>
+                    <button onclick="appendDisplay('*')" class="operator-key">*</button>
+                    <button onclick="appendDisplay('.')">.</button>
+                    <button onclick="appendDisplay('0')">0</button>
+                    <button onclick="calculate()" class="calculate-key">=</button>
+                    <button onclick="appendDisplay('/')" class="operator-key">/</button>
+                    <button onclick="clearDisplay()" class="operator-key">C</button>
+                    <button onclick="previousAnswer()" class="operator-key">Ans</button>
+                    <button onclick="advanced()" class="operator-key">Adv</button>
+                    <button onclick="appendDisplay(')')" class="operator-key">)</button>
+                </div>
+            </div>
+            <div id="advancedPanel">
+                <div id="advancedKeys">
+                    <button onclick="appendDisplay('sin(')" class="operator-key">Sin</button>
+                    <button onclick="appendDisplay('cos(')" class="operator-key">Cos</button>
+                    <button onclick="appendDisplay('tan(')" class="operator-key">Tan</button>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
