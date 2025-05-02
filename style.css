@@ -7,12 +7,42 @@ body{
     background-color: hsl(0, 0%, 10%);
 }
 
+#wrapper{
+    position: relative;
+}
+
 #calculator{
     font-family: Arial, Courier, monospace;
     background-color: hsl(0, 0%, 20%);
     border-radius: 15px;
     max-width: 600px;
     overflow: hidden;
+}
+
+#calculatorContainer {
+    position: relative;
+}
+
+#advancedPanel {
+    position: absolute;
+    top: 7rem;
+    left: 100%; 
+    margin-left: 20px;
+    width: 420px;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0s ease;
+}
+
+#advancedKeys{
+    display: grid;
+    grid-template-columns: repeat(3,0.2fr);
+    gap: 5px;
+    padding: 10px;
 }
 
 #display{
@@ -23,6 +53,7 @@ body{
     border: none;
     color: white;
     background-color: hsl(0, 0%, 25%);
+    outline: none;
 }
 
 #keys{
@@ -49,6 +80,8 @@ button:hover{
 button:active{
     background-color: hsl(0, 0%, 50%);
 }
+
+/* "=" key */
 .calculate-key{
     background-color: hsl(221, 15%, 45%);
 }
@@ -58,6 +91,24 @@ button:active{
 .calculate-key:active{
     background-color: hsl(221, 15%, 65%);
 }
+
+/* operator and other keys key */
+.operator-key{
+    background-color: hsl(221, 5%, 35%);
+}
+.operator-key:hover{
+    background-color: hsl(221, 5%, 40%);
+}
+.operator-key:active{
+    background-color: hsl(221, 5%, 50%);
+}
+
+/* display */
 #display::-webkit-scrollbar {
     display: none;
+}
+
+#advancedPanel.visible {
+    visibility: visible;
+    opacity: 1;
 }
