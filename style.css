@@ -103,6 +103,18 @@ button:active{
     background-color: hsl(221, 5%, 50%);
 }
 
+#angleToggle{
+    background-color: hsl(221, 15%, 45%);
+}
+#angleToggle:hover{
+    background-color: hsl(221, 15%, 55%);
+    color: hsl(220, 100%, 97%);
+}
+#angleToggle:active{
+    background-color: hsl(221, 15%, 65%);
+    color: hsl(220, 100%, 94%);
+}
+
 /* display */
 #display::-webkit-scrollbar {
     display: none;
