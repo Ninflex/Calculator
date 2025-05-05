@@ -1,5 +1,6 @@
 const display = document.getElementById("display");
 let ans = "";
+let angleMode = "Rad"; // default rad mode
 
 function appendDisplay(input){
     display.value += input;
@@ -25,9 +26,25 @@ function advanced() {
     panel.classList.toggle("visible");
 }
 
+function convertAngleMode(){
+    angleMode = angleMode === "Rad" ? "Deg" : "Rad";
+    document.getElementById("angleToggle").textContent = angleMode;
+}
+
 function calculate(){
     try {
-        ans = math.evaluate(display.value);
+        let expr = display.value;
+
+        if(angleMode === "Deg"){
+            expr = expr.replace(/(sin|cos|tan)\(([^)]+)\)/g, (match, fn, val) =>{
+                return `${fn}(( ${val} ) * pi / 180)`; 
+            })
+        }
+
+        ans = math.evaluate(expr);
+        if (Math.abs(ans) < 1e-10) {
+            ans = 0;
+        }
         display.value = ans;
     } catch {
         if(display.value === ""){
@@ -47,7 +64,7 @@ document.addEventListener('keydown', (event) =>{
         //numbers between 0-9
         appendDisplay(key);
     }
-    else if(['+','-','*','/','.'].includes(key)){
+    else if(['+','-','*','/','.',')'].includes(key)){
         appendDisplay(key);
     }
     else if(key === 'Enter'){
