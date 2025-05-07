@@ -9,6 +9,11 @@
 <body>
     
     <div id="wrapper">
+        <div id="historyPanel">
+            <h3>History</h3>
+            <ul id="historyList"></ul>
+            <button onclick="clearHistory()" class="operator-key">Clear</button>
+        </div>
         <div id="calculatorContainer">
             <div id="calculator">
                 <input id="display" placeholder="0" readonly>
@@ -31,16 +36,20 @@
                     <button onclick="appendDisplay('/')" class="operator-key">/</button>
                     <button onclick="clearDisplay()" class="operator-key">C</button>
                     <button onclick="previousAnswer()" class="operator-key">Ans</button>
-                    <button onclick="advanced()" class="operator-key">Adv</button>
+                    <button onclick="appendDisplay('(')" class="operator-key">(</button>
                     <button onclick="appendDisplay(')')" class="operator-key">)</button>
+                    <button onclick="advanced()" class="operator-key">Adv</button>
                 </div>
             </div>
             <div id="advancedPanel">
                 <div id="advancedKeys">
                     <button onclick="convertAngleMode()" id="angleToggle">Rad</button>
+                    <button onclick="appendDisplay('^')" class="operator-key">xʸ</button>
+                    <button onclick="appendDisplay('sqrt(')" class="operator-key">√</button>
                     <button onclick="appendDisplay('sin(')" class="operator-key">Sin</button>
                     <button onclick="appendDisplay('cos(')" class="operator-key">Cos</button>
                     <button onclick="appendDisplay('tan(')" class="operator-key">Tan</button>
+                    
                 </div>
             </div>
         </div>
