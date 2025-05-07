@@ -21,6 +21,21 @@ function previousAnswer(){
     }
 }
 
+function addToHistory(expression, result) {
+    const historyList = document.getElementById("historyList");
+    const li = document.createElement("li");
+    li.textContent = `${expression} = ${result}`;
+    li.onclick = () => {
+        display.value = expression;
+        display.scrollLeft = display.scrollWidth;
+    };
+    historyList.prepend(li); // adds to the top
+}
+
+function clearHistory() {
+    document.getElementById("historyList").innerHTML = "";
+}
+
 function advanced() {
     const panel = document.getElementById("advancedPanel");
     panel.classList.toggle("visible");
@@ -46,6 +61,7 @@ function calculate(){
             ans = 0;
         }
         display.value = ans;
+        addToHistory(expr, ans);
     } catch {
         if(display.value === ""){
             display.value = ""
@@ -81,3 +97,4 @@ document.addEventListener('keydown', (event) =>{
         previousAnswer();
     }
 })
+
