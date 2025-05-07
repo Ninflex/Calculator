@@ -8,7 +8,11 @@ body{
 }
 
 #wrapper{
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 #calculator{
@@ -21,6 +25,41 @@ body{
 
 #calculatorContainer {
     position: relative;
+}
+
+#historyPanel {
+    background-color: hsl(0, 0%, 20%);
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    color: white;
+    font-family: Courier, monospace;
+    width: 250px;
+    box-sizing: border-box;
+}
+
+#historyPanel h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    border-bottom: 1px solid hsl(0, 0%, 30%);
+    padding-bottom: 5px;
+}
+
+#historyList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#historyList li {
+    padding: 6px;
+    cursor: pointer;
+    border-bottom: 1px solid hsl(0, 0%, 30%);
+}
+
+#historyList li:hover {
+    background-color: hsl(0, 0%, 30%);
 }
 
 #advancedPanel {
