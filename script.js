@@ -1,10 +1,22 @@
 const display = document.getElementById("display");
 let ans = "";
+let memory = 0;
 let angleMode = "Rad"; // default rad mode
+let evaluated = false; // allows for next exp to be typed while removing the old answer
 
 function appendDisplay(input){
-    display.value += input;
-    //scrolls with numbers
+    if (evaluated){
+        display.value = "";
+        evaluated = false;
+    }
+
+    const start = display.selectionStart;
+    const end = display.selectionEnd;
+    const current = display.value;
+    const updated = current.slice(0, start) + input + current.slice(end);
+    display.value = updated;
+    display.focus();
+    display.selectionStart = display.selectionEnd = start + input.length;
     display.scrollLeft = display.scrollWidth;
 }
 
@@ -47,6 +59,10 @@ function convertAngleMode(){
 }
 
 function calculate(){
+    if (display.value.trim() === ""){
+        display.value = ""; // avoids undefined result
+        return;
+    }
     try {
         let expr = display.value;
 
@@ -62,33 +78,34 @@ function calculate(){
         }
         display.value = ans;
         addToHistory(expr, ans);
+        evaluated = true;
     } catch {
-        if(display.value === ""){
-            display.value = ""
-        }
-        else{
-            display.value = "Error";
-        }
+        display.value = "Error";
+        evaluated = true;
     }
 }
 
-//Keyboard inputs
+//keyboard inputs
 document.addEventListener('keydown', (event) =>{
     const key = event.key;
+
+    const isControlKey = event.ctrlKey || event.altKey || event.metaKey; // allow control keys (like arrows)
+    const isSpecialKey = ['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(key);
+
+    if (!isControlKey && !isSpecialKey) {
+        event.preventDefault(); // disable typing
+    }
 
     if(!isNaN(key)){
         //numbers between 0-9
         appendDisplay(key);
     }
-    else if(['+','-','*','/','.',')'].includes(key)){
+    else if(['+','-','*','/','.',')','('].includes(key)){
         appendDisplay(key);
     }
     else if(key === 'Enter'){
         event.preventDefault();
         calculate();
-    }
-    else if(key === 'Backspace'){
-        display.value = display.value.slice(0,-1);
     }
     else if(key === 'c'){
         clearDisplay();
