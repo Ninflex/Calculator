@@ -16,7 +16,7 @@
         </div>
         <div id="calculatorContainer">
             <div id="calculator">
-                <input id="display" placeholder="0" readonly>
+                <input id="display" placeholder="0">
                 <div id="keys">
                     <button onclick="appendDisplay('1')">1</button>
                     <button onclick="appendDisplay('2')">2</button>
@@ -49,7 +49,12 @@
                     <button onclick="appendDisplay('sin(')" class="operator-key">Sin</button>
                     <button onclick="appendDisplay('cos(')" class="operator-key">Cos</button>
                     <button onclick="appendDisplay('tan(')" class="operator-key">Tan</button>
-                    
+                    <button onclick="appendDisplay('log10(')" class="operator-key">log</button>
+                    <button onclick="appendDisplay('log(value,base')" class="operator-key">logₐ(x)</button>
+                    <button onclick="appendDisplay('log(')" class="operator-key">ln</button>
+                    <button onclick="appendDisplay('e')" class="operator-key">e</button>
+                    <button onclick="appendDisplay('pi')" class="operator-key">π</button>
+                    <button onclick="appendDisplay('!')" class="operator-key">!</button>
                 </div>
             </div>
         </div>
