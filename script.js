@@ -16,7 +16,7 @@ function appendDisplay(input){
     const updated = current.slice(0, start) + input + current.slice(end);
     display.value = updated;
     display.focus();
-    display.selectionStart = display.selectionEnd = start + input.length;
+    display.selectionStart = display.selectionEnd = start + input.length; //puts the caret at the end
     display.scrollLeft = display.scrollWidth;
 }
 
@@ -26,7 +26,7 @@ function clearDisplay(){
 
 function previousAnswer(){
     if(ans === ""){
-        display.value += "0"
+        display.value += "0" // default ans
     }
     else{
         display.value += ans;
@@ -74,7 +74,7 @@ function calculate(){
 
         ans = math.evaluate(expr);
         if (Math.abs(ans) < 1e-10) {
-            ans = 0;
+            ans = 0; // for very small answer like cos(90)
         }
         display.value = ans;
         addToHistory(expr, ans);
@@ -114,4 +114,3 @@ document.addEventListener('keydown', (event) =>{
         previousAnswer();
     }
 })
-
