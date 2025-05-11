@@ -1,2 +1,2 @@
 # Calculator
-![Demo](media/calc.gif)
+![Demo](calc.gif)
